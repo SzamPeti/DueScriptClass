@@ -1,32 +1,40 @@
 # Calculator
+def adatkeres(tipus):
+    valasz = 0
+    if tipus == "sz":
+        valasz = input("Kérek egy számot: ")
+        while not valasz .isnumeric():
+            print("Rossz érték!!")
+            valasz = input("Kérek egy számot: ")
+        valasz = int(valasz)
+    elif tipus == "m":
+        valasz = input("Kérem a műveleti jelet (+, -, *, /)")
+        while valasz not in ["+", "-", "*", "/"]:
+            print("Nem érvényes a jel!")
+            valasz = input("Kérem a műveleti jelet (+, -, *, /)")
+    return valasz
+
+
+def szamolas():
+    global eredmeny
+    if muvelet == "+":
+        eredmeny = nmb1 + nmb2
+    elif muvelet == "-":
+        eredmeny = nmb1 - nmb2
+    elif muvelet == "*":
+        eredmeny = nmb1 * nmb2
+    elif muvelet == "/":
+        eredmeny = nmb1 / nmb2
+    return eredmeny
+
+
 print("Calculator")
+nmb1 = adatkeres("sz")
+nmb2 = adatkeres("sz")
+muvelet = adatkeres("m")
+eredmeny = szamolas()
+szamolas()
 
-nmb1 = input("Kérek egy számot: ")
-while not nmb1 .isnumeric():
-    print("Rossz érték!!")
-    nmb1 = input("Kérek egy számot: ")
-nmb1 = int(nmb1)
-
-nmb2 = input("Kérek egy számot: ")
-while not nmb2 .isnumeric():
-    print("Rossz érték!!")
-    nmb2 = input("Kérek egy számot: ")
-nmb2 = int(nmb2)
-
-muvelet = input("Kérem a műveleti jelet (+, -, *, /)")
-while muvelet not in ["+", "-", "*", "/"]:
-    print("Nem érvényes a jel!")
-    muvelet = input("Kérem a műveleti jelet (+, -, *, /)")
-
-eredmeny = 0
-if muvelet == "+":
-    eredmeny = nmb1 + nmb2
-elif muvelet == "-":
-    eredmeny = nmb1 - nmb2
-elif muvelet == "*":
-    eredmeny = nmb1 * nmb2
-elif muvelet == "/":
-    eredmeny = nmb1 / nmb2
 
 print(str(nmb1).rjust(50))
 print(muvelet, end="")
