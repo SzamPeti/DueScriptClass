@@ -34,6 +34,9 @@ def psw():
         if not ok_psw:
             user_psw = input("Error!\nPassword (contain 1 number, minimum 8 caracter and contain a capital letter): ")
             ok_psw = True
+        else:
+            ok_psw = False
+
 
 def psw_auth():
     ok_psw = True
