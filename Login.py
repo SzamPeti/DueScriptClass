@@ -57,12 +57,10 @@ def psw():
         return user_psw
 
 
-def psw_auth(user_psw, attempts, msg):
-    i = 1
+def psw_auth(user_psw, msg):
     psw2 = input(msg)
     while psw2 != user_psw and i < attempts:
         psw2 = input(msg)
-        i += 1
     if psw2 == user_psw:
         ok_psw = True
     else:
@@ -87,10 +85,32 @@ def login():
     if jelszo == "":
         print("Not found any user!")
         ok_login = False
-    else:
-        if not psw_auth(jelszo, 3, "Give a password: "):
+    i = 1
+    while jelszo != "":
+        if psw_auth(jelszo, "Please give the password: "):
+            break
+        i += 1
+        if i > 3:
+            print("Password is not okay!")
             ok_login = False
+            break
     return ok_login
+
+
+def jelszo_generalasa(hossz, nagybetu, kisbetu, szam):
+    import string
+    import random
+    karakterek = ""
+    if nagybetu:
+        karakterek = karakterek + string.ascii_uppercase
+    if kisbetu:
+        karakterek = karakterek + string.ascii_lowercase
+    if szam:
+        karakterek = karakterek + string.digits
+    jelszo = ""
+    for _ in range(hossz):
+        jelszo = jelszo + karakterek[random.randint(0, len(karakterek)-1)]
+    return jelszo
 
 
 # Base of the program
