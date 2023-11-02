@@ -76,7 +76,7 @@ def regisztracio_ablak():
     reg_felh.grid(row=0, column=1)
     reg_jelszo.grid(row=1, column=1)
     reg_jelszo2.grid(row=2, column=1)
-    gomb_ok.grid(row=3, column=0)
+    gomb_ok.grid(row=3, column=0, columnspan=3)
     jelszo_gen_gomb.grid(row=1, column=2)
 
     regisztracio.mainloop()
