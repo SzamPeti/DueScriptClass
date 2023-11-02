@@ -1,4 +1,6 @@
 from tkinter import *
+from tkinter import messagebox
+
 import gyak_09
 
 
@@ -37,6 +39,10 @@ def beleptetes_ablak():
 def regisztracio_ablak():
     def ok_gomb_kezelese():
         regisztracio.destroy()
+        if jsz.get() == jsz2.get():
+            regisztracio.destroy()
+        else:
+            messagebox.showerror("Hiba", "Nem egyezik a két jelszó")
 
     def jelszo_gen_gomb_kezelese():
         pw = gyak_09.Jelszo()
