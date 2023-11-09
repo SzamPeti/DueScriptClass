@@ -20,9 +20,13 @@ class WeatherBot:
         data = response.json()
 
         if response.status_code == 200:
+            city_name = data['name']
             weather_description = data['weather'][0]['description']
             temperature = data['main']['temp']
-            return f"Időjárás: {weather_description}, Hőmérséklet: {temperature}°C"
+            feels_like = data['main']['feels_like']
+            wind_speed = round(data['wind']['speed'] * 3.6, 2)
+            return (f"{city_name}\nIdőjárás: {weather_description}\nHőmérséklet: {temperature}°C\nHőérzet: {feels_like}°C\n"
+                    f"Szélsebesség: {wind_speed} km/h")
         else:
             return "Nem sikerült lekérdezni az időjárást."
 
@@ -36,7 +40,7 @@ class WeatherBot:
         while True:
             weather_info = self.get_weather()
             self.send_notification(weather_info)
-            time.sleep(3600)  # Várakozás 1 óra, majd újra lekérdezés
+            time.sleep(3600)  # Várakozás 1 óra, majd újra lekérdezés (ms-ben számol)
 
 
 if __name__ == "__main__":
